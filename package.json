@@ -39,6 +39,6 @@
       "last 1 safari version"
     ]
   },
-  "homepage-inactif": "https://VOTRE_USERNAME_GITHUB.github.io/VOTRE_NOM_DE_DEPOT_GITHUB/",
+  "homepage-inactif": "https://marielou33690.github.io/ex5-signets/",
   "homepage-aide": "Avant de déployer sur GitHub vous devez configurer correctement la propriété homepage ci-dessus : 1) retirer le suffixe '-inactif' de l'étiquette, et 2) remplacer 'username' par le nom de votre compte GitHub et 'depot-gh' par le nom de votre dépôt GitHub dans la valeur de la propriété."
 }
