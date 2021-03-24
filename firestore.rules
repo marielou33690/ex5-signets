@@ -1,0 +1,53 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+  /********************** Règle pour l'exercice 3 *********************/
+  match /ex3-produits/{document=**} {
+  	allow read;
+  }
+  
+  /********************** Règles pour l'exercice 4 **********************/
+  // Collection 'utilisateurs-ex4' : document enfants (id d'utilisateur)
+   match /utilisateurs-ex4/{identifiantUtilisateur} {
+     allow read, update, delete: if request.auth !=null && request.auth.uid == identifiantUtilisateur;
+     allow create: if request.auth !=null
+   }
+   //  Collection 'utilisateurs-ex4' : dossiers
+   match /utilisateurs-ex4/{idUtil}/dossiers/{document=**} {
+   	allow read, write: if request.auth != null && request.auth.uid == idUtil;
+   }
+   
+  // Collection 'signets-ex4' (pas utilisée en calsse ni dans les évaluations)
+	// match /signets-ex4{
+	//	allow read, create: if request.auth !=null;
+  //}
+   
+   /********************** Règles pour les prototypes développés en classe**********************/
+   // Règle pour le panier d'achats
+  match /produits/{document=**} {
+  	allow read;
+  }
+  
+  // Règles pour Signets
+  // Collection 'utilisateurs' : documents enfants (id d'utilisateur)
+   match /utilisateurs/{identifiantUtilisateur} {
+     allow read, update, delete: if request.auth !=null && request.auth.uid == identifiantUtilisateur;
+     allow create: if request.auth !=null
+   }
+   //  Collection 'utilisateurs' : sous-collection 'dossiers'
+   match /utilisateurs/{idUtil}/dossiers/{document=**} {
+   	allow read, create: if request.auth != null && request.auth.uid == idUtil;
+   }
+  
+   /********************** Règles pour l'exercice 5 **********************/
+   // Collection 'utilisateurs-ex5' : document enfants (id d'utilisateur)
+   match /utilisateurs-ex5/{idUtil} {
+     allow read, update, delete: if request.auth !=null && request.auth.uid == idUtil;
+     allow create: if request.auth !=null
+   }
+   //  Collection 'utilisateurs-ex5' : dossiers
+   match /utilisateurs-ex5/{idUtil}/dossiers/{document=**} {
+   	allow read, write, delete: if request.auth != null && request.auth.uid == idUtil;
+   }
+  }
+}
