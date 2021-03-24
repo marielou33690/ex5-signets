@@ -25,7 +25,6 @@ export async function lireTout(uid, optionTri) {
   /************************************************************** Exercice #5 : question A **************************/
   
   const infosTri = optionTri.split("-");
-  console.log(optionTri);
   // Modifier très légèrement la ligne suivante
   const reponse = await firestore.collection(utilRef).doc(uid).collection(dossRef).orderBy(infosTri[0], infosTri[1]).get();
   reponse.forEach(
