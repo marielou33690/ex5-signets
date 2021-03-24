@@ -20,6 +20,7 @@ export default function Appli() {
   // État de la boîte de dialogue "Ajout Dossier" (ouverte = true / fermée = false)
   const [ouvertAD, setOuvertAD] = useState(false);
 
+ 
   // Observer le changement d'état de la connexion utilisateur (FB-Auth)
   // Remarquez que ce code est dans un useEffect() car on veut l'exécuter 
   // UNE SEULE FOIS (regardez le tableau des 'deps' - dépendances) et ceci 
